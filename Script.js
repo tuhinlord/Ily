@@ -1,16 +1,20 @@
-// Get the buttons and response div
-const yesBtn = document.getElementById("yes-btn");
-const noBtn = document.getElementById("no-btn");
-const response = document.getElementById("response");
+// Get references to the buttons and message
+const yesButton = document.getElementById("yesButton");
+const noButton = document.getElementById("noButton");
+const message = document.getElementById("message");
 
-// Set up the "no" button behavior to make it teleport when clicked
-noBtn.addEventListener("click", function() {
-  noBtn.style.position = "relative";
-  noBtn.style.top = "-50px";  // Moves the button up by 50px when clicked
-  noBtn.disabled = true; // Disables the button after moving it
+// Function to move the "No" button randomly on the screen
+noButton.addEventListener("click", () => {
+  const maxX = window.innerWidth - noButton.offsetWidth;
+  const maxY = window.innerHeight - noButton.offsetHeight;
+  const randomX = Math.random() * maxX;
+  const randomY = Math.random() * maxY;
+  noButton.style.position = "absolute";
+  noButton.style.left = `${randomX}px`;
+  noButton.style.top = `${randomY}px`;
 });
 
-// Set up the "yes" button behavior to display the response
-yesBtn.addEventListener("click", function() {
-  response.classList.remove("hidden");  // Reveal the response text
+// Function to show the message when "Yes" is clicked
+yesButton.addEventListener("click", () => {
+  message.style.display = "block";
 });
